@@ -1,11 +1,13 @@
 FROM circleci/node:8.2-browsers
-ENV LAST_UPDATE=2016-08-21
 
-RUN sudo apt-get update && \
-    sudo apt-get upgrade -y
+RUN sudo apt-get update && sudo apt-get install -y \
+    php5-mcrypt \
+    python-pip \
+    python-dev
 
-RUN sudo apt-get install rsync awscli
-RUN aws --version
+RUN pip install awscli --upgrade --user
+RUN echo PATH="~/.local/bin:${PATH}" >> ~/.bashrc
+ENV PATH="~/.local/bin:${PATH}"
 
 ##################################### Install heroku ################################
 RUN sudo wget -qO- https://cli-assets.heroku.com/install-ubuntu.sh | sh
