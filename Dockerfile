@@ -5,6 +5,7 @@ ENV LAST_UPDATE=2016-08-21
 # Current version is aws-cli/1.10.53 Python/2.7.12
 #####################################################################################
 
+RUN sudo -s
 RUN apt-get update && \
     apt-get upgrade -y
 
