@@ -5,7 +5,7 @@ ENV LAST_UPDATE=2016-08-21
 # Current version is aws-cli/1.10.53 Python/2.7.12
 #####################################################################################
 
-RUN sudo -s
+USER root
 RUN apt-get update && \
     apt-get upgrade -y
 
@@ -63,6 +63,8 @@ ADD examples/README.md /home/aws/examples/README.md
 RUN chown -R aws:aws /home/aws/examples
 
 USER aws
+USER root
+RUN aws --version
 
 ##################################### Install heroku ################################
 RUN sudo wget -qO- https://cli-assets.heroku.com/install-ubuntu.sh | sh
