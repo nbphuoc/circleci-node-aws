@@ -5,7 +5,7 @@ RUN sudo apt-get update && sudo apt-get install -y \
     python-pip \
     python-dev
 
-RUN pip install awscli --upgrade --user
+RUN pip install awscli awsebcli --upgrade --user
 RUN echo PATH="~/.local/bin:${PATH}" >> ~/.bashrc
 ENV PATH="~/.local/bin:${PATH}"
 
